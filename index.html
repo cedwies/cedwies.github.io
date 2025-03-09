@@ -138,61 +138,123 @@
             border-radius: 2px;
         }
         
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
+        .feature-project {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #5a67d8, #805ad5);
+            color: white;
+        }
+        
+        .project-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
         
         .project-image {
             width: 100%;
-            height: 180px;
+            height: 400px;
             object-fit: cover;
             background-color: #e2e8f0;
         }
         
         .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            padding: 2rem;
         }
         
         .project-description {
-            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background-color: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .performance-metrics {
+            background-color: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .metrics-title {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            font-size: 0.95rem;
+            color: var(--dark);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .metric-card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .metric-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .metric-detail {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-top: 0.25rem;
         }
         
         .project-technologies {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
         
         .project-tech {
             background-color: #edf2f7;
             color: var(--accent);
-            padding: 0.25rem 0.75rem;
+            padding: 0.5rem 1rem;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 500;
         }
         
@@ -201,14 +263,31 @@
             gap: 1rem;
         }
         
-        .project-links a {
+        .project-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
             text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .project-link:hover {
+            background-color: #4c51bf;
+        }
+        
+        .project-link-secondary {
+            background-color: white;
             color: var(--accent);
-            font-weight: 500;
-            font-size: 0.9rem;
+            border: 2px solid var(--accent);
+        }
+        
+        .project-link-secondary:hover {
+            background-color: #f7fafc;
         }
         
         .skills {
@@ -391,6 +470,10 @@
             .nav {
                 margin-top: 1rem;
             }
+            
+            .features-grid, .metrics-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -400,7 +483,7 @@
         <div class="container header-content">
             <div class="logo">Cedric Wiese</div>
             <nav class="nav">
-                <a href="#projects">Projects</a>
+                <a href="#project">Featured Project</a>
                 <a href="#skills">Skills</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
@@ -413,8 +496,8 @@
             <img src="assets/profile.JPG" alt="Cedric Wiese" class="hero-image">
             <div class="hero-content">
                 <h1>Cedric Wiese</h1>
-                <h2>Computer Scientist, Software Developer and Problem Solver</h2>
-                <p>I love finding and building innovative solutions for todays problems.</p>
+                <h2>Computer Scientist & Low-Latency Systems Developer</h2>
+                <p>I build high-performance software that pushes the boundaries of speed and efficiency.</p>
                 <div class="social-links">
                     <a href="https://github.com/cedwies" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -441,93 +524,90 @@
             </div>
         </section>
         
-        <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <img src="/api/placeholder/400/250" alt="Project 1" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Project Name 1</h3>
-                        <p class="project-description">A brief description of what this project does and the problem it solves. Keep it concise but informative.</p>
-                        <div class="project-technologies">
-                            <span class="project-tech">Python</span>
-                            <span class="project-tech">TensorFlow</span>
-                            <span class="project-tech">Docker</span>
+        <section id="project">
+            <h2>Featured Project</h2>
+            <div class="feature-project">
+                <div class="project-header">
+                    <h3 class="project-title">Low-Latency Trading Systems Framework</h3>
+                    <p class="project-subtitle">A high-performance C++ framework for ultra-low-latency trading</p>
+                </div>
+                <img src="/api/placeholder/1200/400" alt="Trading Systems Framework" class="project-image">
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>This is my approach for a high-performance, production-grade C++ framework for building ultra-low-latency trading systems, used for quantitative finance and systems programming. My focus was on highly efficient and especially clean code.</p>
+                        <p>I saw this project as a challenge, trying to push as hard as I can, seeing what I can get done if I give it my all.</p>
+                    </div>
+                    
+                    <h3 class="metrics-title">Key Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>⚡ Ultra-Low Latency</h3>
+                            <p>Sub-microsecond processing times with optimized execution paths</p>
                         </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                </svg>
-                                Demo
-                            </a>
+                        <div class="feature-card">
+                            <h3>📈 Statistical Arbitrage</h3>
+                            <p>Advanced trading strategy implementation with real-time signal generation</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🔄 Lock-Free Structures</h3>
+                            <p>Concurrent data structures designed for minimal contention</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📊 Market Simulation</h3>
+                            <p>Realistic market data simulation environment for strategy testing</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <img src="/api/placeholder/400/250" alt="Project 2" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Project Name 2</h3>
-                        <p class="project-description">A brief description of what this project does and the problem it solves. Keep it concise but informative.</p>
-                        <div class="project-technologies">
-                            <span class="project-tech">JavaScript</span>
-                            <span class="project-tech">React</span>
-                            <span class="project-tech">Node.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                </svg>
-                                Demo
-                            </a>
+                    
+                    <div class="performance-metrics">
+                        <h3 class="metrics-title">Performance Highlights</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-name">Add Order</div>
+                                <div class="metric-value">347.2 ns</div>
+                                <div class="metric-detail">Mean Latency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-name">Best Bid/Ask Lookup</div>
+                                <div class="metric-value">14.32 ns</div>
+                                <div class="metric-detail">Mean Latency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-name">Cancel Order</div>
+                                <div class="metric-value">327.69 ns</div>
+                                <div class="metric-detail">Mean Latency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-name">Lock-Free Queue</div>
+                                <div class="metric-value">~14.5 ns</div>
+                                <div class="metric-detail">Push/Pop Operations</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <img src="/api/placeholder/400/250" alt="Project 3" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Project Name 3</h3>
-                        <p class="project-description">A brief description of what this project does and the problem it solves. Keep it concise but informative.</p>
-                        <div class="project-technologies">
-                            <span class="project-tech">Java</span>
-                            <span class="project-tech">Spring Boot</span>
-                            <span class="project-tech">PostgreSQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                </svg>
-                                Demo
-                            </a>
-                        </div>
+                    
+                    <h3 class="metrics-title">Technical Details</h3>
+                    <div class="project-technologies">
+                        <span class="project-tech">C++20</span>
+                        <span class="project-tech">Lock-free Programming</span>
+                        <span class="project-tech">Statistical Arbitrage</span>
+                        <span class="project-tech">Cache-line Optimization</span>
+                        <span class="project-tech">Zero-overhead Abstractions</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/cedwies" target="_blank" class="project-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                            View Project
+                        </a>
+                        <a href="#" class="project-link project-link-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            Run Demo
+                        </a>
                     </div>
                 </div>
             </div>
@@ -539,10 +619,10 @@
                 <div class="skill-category">
                     <h3>Languages</h3>
                     <div class="skill-list">
+                        <span class="skill-item">C++</span>
                         <span class="skill-item">Python</span>
                         <span class="skill-item">JavaScript</span>
                         <span class="skill-item">Java</span>
-                        <span class="skill-item">C++</span>
                         <span class="skill-item">SQL</span>
                     </div>
                 </div>
@@ -550,22 +630,32 @@
                 <div class="skill-category">
                     <h3>Frameworks & Libraries</h3>
                     <div class="skill-list">
+                        <span class="skill-item">STL</span>
+                        <span class="skill-item">Boost</span>
+                        <span class="skill-item">TensorFlow</span>
                         <span class="skill-item">React</span>
                         <span class="skill-item">Node.js</span>
-                        <span class="skill-item">TensorFlow</span>
-                        <span class="skill-item">Django</span>
-                        <span class="skill-item">Spring Boot</span>
                     </div>
                 </div>
                 
                 <div class="skill-category">
                     <h3>Tools & Technologies</h3>
                     <div class="skill-list">
+                        <span class="skill-item">CMake</span>
                         <span class="skill-item">Git</span>
                         <span class="skill-item">Docker</span>
                         <span class="skill-item">AWS</span>
-                        <span class="skill-item">CI/CD</span>
                         <span class="skill-item">Linux</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Specialties</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Low-Latency Systems</span>
+                        <span class="skill-item">Algorithmic Trading</span>
+                        <span class="skill-item">Concurrent Programming</span>
+                        <span class="skill-item">Performance Optimization</span>
                     </div>
                 </div>
             </div>
@@ -613,3 +703,8 @@
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                     </svg>
                     GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/cedric-wiese" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12
